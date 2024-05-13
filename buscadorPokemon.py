@@ -1,6 +1,7 @@
 import requests
 import matplotlib.pyplot as plt
 import shutil
+import os
 from PIL import Image
 from urllib.request import urlopen
 
@@ -86,4 +87,9 @@ for i in range(len(movimientos)):
 
 ############################################################
 #Mandar archivo creado a la carpeta pokedex
-shutil.move(pokemon + '.json', 'pokedex')
+try:
+    shutil.move(pokemon + '.json', 'pokedex', )
+except:
+    print('Ya esta registrado, busca en pokedex')
+    archivo = pokemon + '.json'
+    os.remove(archivo)
